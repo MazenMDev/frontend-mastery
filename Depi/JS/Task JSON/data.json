@@ -1,20 +1,8 @@
 [
   {
-    "userId": 1,
     "id": 1,
-    "title": "Here we go 1",
-    "body": "Test number one Test number one Test number one Test number one"
-  },
-  {
-    "userId": 2,
-    "id": 2,
-    "title": "Here we go 2",
-    "body": "Test number two Test number two Test number two Test number two"
-  },
-  {
-    "userId": 3,
-    "id": 3,
-    "title": "Here we go 3",
-    "body": "Test number three Test number three Test number three Test number three"
+    "name": "Mazen mahmoud",
+    "career": "Software Engineer",
+    "skills": ["JavaScript", "Python", "C++"]
   }
 ]
