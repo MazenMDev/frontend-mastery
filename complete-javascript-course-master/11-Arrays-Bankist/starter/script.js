@@ -72,7 +72,7 @@ btnLogin.addEventListener('click', e => {
   console.log('--------------------');
   console.log('Login');
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
+    acc => acc.username === inputLoginUsername.value,
   );
   if (Number(inputLoginPin.value) === currentAccount?.pin) {
     labelWelcome.textContent = `Welcome back, ${
@@ -97,7 +97,7 @@ btnTransfer.addEventListener('click', e => {
 
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
-    acc => acc.username === inputTransferTo.value
+    acc => acc.username === inputTransferTo.value,
   );
   console.log('amount', amount);
   console.log(receiverAcc);
@@ -191,8 +191,8 @@ function displayMovements(movements, state = 'default') {
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+          i + 1
+        } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -372,8 +372,8 @@ console.log(movementsUSDfor);
 const movementsDescriptions = movements.map(
   (mov, i) =>
     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
-      mov
-    )}`
+      mov,
+    )}`,
 );
 
 console.log(movementsDescriptions);
@@ -565,7 +565,7 @@ console.log(huskyWeight);
 // 2. Find the name of the only breed that likes both "running" and "fetch" ("dogBothActivities" variable)
 console.log('Number 2--------------------');
 const dogBothActivities = breeds.find(
-  b => b.activities.includes('running') && b.activities.includes('fetch')
+  b => b.activities.includes('running') && b.activities.includes('fetch'),
 ).breed;
 console.log(dogBothActivities);
 
@@ -633,7 +633,7 @@ console.log(movements.sort((a, b) => b - a));
 // Group By
 console.log(movements);
 const groupedMovements = Object.groupBy(movements, mov =>
-  mov > 0 ? 'deposit' : 'withdrawl'
+  mov > 0 ? 'deposit' : 'withdrawl',
 );
 console.log(groupedMovements);
 
@@ -670,7 +670,7 @@ console.log(z);
 
 const w = Array.from(
   { length: 100 },
-  () => Math.trunc(Math.random() * 100) + 1
+  () => Math.trunc(Math.random() * 100) + 1,
 ); // random numbers between 1 and 100
 console.log(w);
 
@@ -678,13 +678,13 @@ console.log(w);
 labelBalance.addEventListener('click', function () {
   let movementsUI = Array.from(
     document.querySelectorAll('.movements__value'),
-    el => Number(el.textContent.replace('€', ''))
+    el => Number(el.textContent.replace('€', '')),
   );
   console.log(movementsUI);
 
   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
   movementsUI2 = movementsUI2.map(el =>
-    Number(el.textContent.replace('€', ''))
+    Number(el.textContent.replace('€', '')),
   );
   console.log(movementsUI2);
 });
@@ -761,7 +761,7 @@ const sum = accounts
     {
       deposits: 0,
       withdrawals: 0,
-    }
+    },
   );
 console.log(sum.deposits, sum.withdrawals);
 
@@ -860,7 +860,7 @@ console.log(group);
 console.log('Number 9--------------------');
 const numOwnersGroup = Object.groupBy(
   dogs,
-  dog => `${dog.owners.length} owners`
+  dog => `${dog.owners.length} owners`,
 );
 console.log(numOwnersGroup);
 
@@ -869,3 +869,11 @@ console.log('Number 10--------------------');
 const sortedDogs = dogs.slice().sort((a, b) => a.recFood - b.recFood);
 console.log(sortedDogs);
 console.log(dogs);
+
+console.log(
+  'here we go to the moon this is not our life mazen we need to change really quick and fast, we need to rethink again',
+);
+
+console.log(
+  'here we go to the moon this is not our life mazen we ned to change really quick and fast, we need to rethink again',
+);
