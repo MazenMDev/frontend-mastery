@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/dayjs@1/dayjs.min.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const button = <button>Click me</button>;
+      const paragraph = <p>This is a paragraph.</p>;
+      const div = (
+        <div>
+          <h2>Heading</h2>
+          <p>This is a paragraph inside a div. {2 + 2}</p>
+        </div>
+      );
+
+      console.log(dayjs().format("YYYY-MM-DD HH:mm:ss"));
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(
+        <div>
+          {button}
+          {paragraph}
+          {div}
+        </div>,
+      );
+    </script>
+  </body>
+</html>
