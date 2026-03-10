@@ -3,14 +3,6 @@ Here I collect projects, experiments, and mini-challenges as I build toward beco
 
 ---
 
-## Current Goals
-
-- Master **JavaScript** and understand its core concepts deeply.
-- Build **small projects** to apply what I learn and strengthen problem-solving.
-- Improve **code practices**: clean, organized, and maintainable code.
-
----
-
 ## How to Use
 
 Clone this repository:
