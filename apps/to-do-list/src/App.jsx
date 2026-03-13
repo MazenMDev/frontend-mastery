@@ -67,6 +67,10 @@ function App() {
     }
   };
 
+  const handleDelete = (index) => {
+    setTodos((prevTodos) => prevTodos.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="App">
       <div className="header">
@@ -115,6 +119,7 @@ function App() {
                   stroke="currentColor"
                   class="size-6"
                   className="delete-icon"
+                  onClick={() => handleDelete(index)}
                 >
                   <path
                     stroke-linecap="round"
