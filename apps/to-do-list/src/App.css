@@ -1,0 +1,350 @@
+:root {
+  --surface: #f4f8fb;
+  --card: #ffffff;
+  --item: #f9fcff;
+  --text: #1d2a35;
+  --muted: #5b6a75;
+  --accent: #0f9d8f;
+  --accent-strong: #0b7d72;
+  --border: #dbe7ee;
+  --ring: rgba(15, 157, 143, 0.2);
+}
+
+.App {
+  width: min(92vw, 640px);
+  min-height: 78vh;
+  margin: 28px auto;
+  padding: 26px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  box-shadow: 0 20px 40px rgba(17, 42, 60, 0.12);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header h2 {
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.3px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #bdd0dc;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.97rem;
+  transition: 0.3s ease;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.input-container button {
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1ab8a8;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.input-container button:hover {
+  filter: brightness(0.97);
+  background-color: var(--accent-strong);
+}
+
+.input-container button:active {
+  transform: translateY(1px);
+}
+
+.to-do-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.to-do-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.to-do-container ul li {
+  user-select: none;
+  padding: 14px 0;
+  border-radius: 0;
+  color: var(--text);
+  font-size: 0.97rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.to-do-container ul li .todo-text {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.to-do-container ul li .todo-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.to-do-container ul li:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.to-do-container ul li.completed {
+  color: var(--muted);
+}
+
+.to-do-container ul li.completed .todo-text::after {
+  transform: scaleX(1);
+}
+
+.to-do-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 0 50px;
+  transition: background-color 0.2s ease;
+  border-radius: 20px;
+}
+
+.to-do-item:hover {
+  background-color: rgba(244, 248, 251, 0.7);
+  /* background-color: lightblue; */
+}
+
+.to-do-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--border);
+}
+
+.to-do-item::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  background-color: var(--border);
+}
+
+.done-mark {
+  position: absolute;
+  left: 15px;
+  width: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.to-do-item li.completed ~ .done-mark {
+  opacity: 1;
+}
+
+.edit-icon {
+  width: 18px;
+  height: 18px;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: var(--accent);
+  background-color: rgba(15, 157, 143, 0.08);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.delete-icon {
+  width: 18px;
+  height: 18px;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.08);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+  transform: translateY(-1px);
+}
+
+.edit-icon:hover {
+  background-color: rgba(15, 157, 143, 0.14);
+}
+
+.delete-icon:hover {
+  background-color: rgba(231, 76, 60, 0.14);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 29, 38, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.edit-modal {
+  width: min(92vw, 420px);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(18, 37, 52, 0.2);
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.edit-modal h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.edit-modal input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #bdd0dc;
+  border-radius: 10px;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+
+.edit-modal input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-actions button {
+  border: none;
+  border-radius: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  background-color: #edf2f6;
+  color: #334155;
+}
+
+.save-btn {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.save-btn:hover {
+  background-color: var(--accent-strong);
+}
+
+@media (max-width: 640px) {
+  .App {
+    margin: 14px;
+    padding: 18px;
+    min-height: auto;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  .input-container button {
+    width: 100%;
+  }
+
+  .to-do-item {
+    padding: 0 12px 0 40px;
+    gap: 8px;
+  }
+
+  .edit-icon,
+  .delete-icon,
+  .done-mark {
+    padding: 4px;
+    width: 16px;
+  }
+
+  .done-mark {
+    left: 10px;
+  }
+
+  .to-do-item::before {
+    left: 12px;
+    width: 20px;
+    height: 20px;
+  }
+}
