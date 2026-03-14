@@ -1,12 +1,24 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    try {
+      const storedTodos = localStorage.getItem("todos");
+      return storedTodos ? JSON.parse(storedTodos) : [];
+    } catch {
+      return [];
+    }
+  });
+  
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
   const inputRef = useRef();
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -15,7 +27,11 @@ function App() {
   };
 
   const handleAdd = () => {
-    const newItem = { completed: false, text: inputRef.current.value };
+    const text = inputRef.current.value.trim();
+    if (!text) {
+      return;
+    }
+    const newItem = { completed: false, text: text };
     setTodos([...todos, newItem]);
     inputRef.current.value = "";
   };
