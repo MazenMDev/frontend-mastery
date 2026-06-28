@@ -10,7 +10,10 @@ function App() {
       return [];
     }
   });
-  
+
+  const [search, setSearch] = useState("");
+  // here I want to filter the todos based on the search term
+  const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(search.toLowerCase()));
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
